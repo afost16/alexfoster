@@ -1,3 +1,4 @@
+/* Base styles */
 html {
     font-size: 16px;
 }
@@ -8,11 +9,17 @@ body {
     margin: 75px 250px;
 }
 
+/* Intro section */
 .intro {
     display: flex;
     gap: 20px;
     align-items: center;
     margin-bottom: 15px;
+}
+
+.para p {
+    margin: 0;
+    font-size: 1.1rem;
 }
 
 address {
@@ -22,49 +29,38 @@ address {
     font-style: normal;
 }
 
+address p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
 .email {
     color: #0000EE;
 }
 
-/* typography */
+/* Typography */
 h1 {
-    font-size: 2.0rem;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    font-size: 2rem;
+    margin: 0;
 }
 
 h2 {
     font-size: 1.6rem;
-    margin-bottom: 0px;
-    margin-top: 10px;
-}
-
-.para p {
-    margin: 0px;
+    margin: 10px 0 0;
 }
 
 p {
     font-size: 1.1rem;
-    margin-bottom: 10px;
-    margin-top: 0px;
+    margin: 0 0 10px 0;
 }
 
-.contact p {
+.contact p,
+.contact p a,
+a {
     font-size: 1.1rem;
-    margin-bottom: 10px;
-    margin-top: 0px;
-
-}
-
-.contact p a {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    margin-top: 0px;
-
 }
 
 a {
-    font-size: 1.1rem;
     text-decoration: none;
     color: #0000FF;
 }
@@ -83,25 +79,24 @@ hr {
 }
 
 footer p {
-    font-size: .9rem;
+    font-size: 1.0rem;
 }
 
-/* image */
+/* Images */
 .headshot {
     width: auto;
     height: 180px;
 }
 
-/* responsiveness */
+/* Responsiveness */
 @media (max-width: 900px) {
     body {
-        margin: 30px 30px;
+        margin: 30px;
     }
 
     .intro {
-        display: flex;
-        gap: 10px;
         flex-direction: column;
+        gap: 10px;
     }
 
     .headshot {
@@ -110,33 +105,25 @@ footer p {
 }
 
 @media (min-width: 1850px) {
-    /* for larger devices */
     h1 {
         font-size: 2.4rem;
-        margin-top: 0px;
     }
-    
+
     h2 {
-        font-size: 2.0rem;
+        font-size: 2rem;
         margin-top: 20px;
     }
-    
-    p {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-    
-    .contact p {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-    
-    .contact p a {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-    }
-    
+
+    p,
+    .contact p,
+    .contact p a,
     a {
         font-size: 1.5rem;
+        margin-bottom: 20px;
     }
-  }
+
+    .para p {
+        margin: 0;
+        font-size: 1.5rem; /* Ensures it matches the global paragraph size */
+    }
+}
