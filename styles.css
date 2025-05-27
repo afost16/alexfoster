@@ -6,7 +6,7 @@ html {
 body {
     font-family: 'Times New Roman', Times, serif;
     line-height: 1.5;
-    margin: 75px 250px;
+    margin: 75px 300px;
 }
 
 /* Intro section */
@@ -19,7 +19,7 @@ body {
 
 .para p {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 address {
@@ -31,7 +31,7 @@ address {
 
 address p {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .email {
@@ -40,24 +40,24 @@ address p {
 
 /* Typography */
 h1 {
-    font-size: 2rem;
-    margin: 0;
+    font-size: 2.2rem;
+    margin: 0 0 7.5px;
 }
 
 h2 {
     font-size: 1.6rem;
-    margin: 10px 0 0;
+    margin: 20px 0 0;
 }
 
 p {
-    font-size: 1.1rem;
-    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    margin: 0 0 16px 0;
 }
 
 .contact p,
 .contact p a,
 a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 a {
