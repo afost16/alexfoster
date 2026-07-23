@@ -2,93 +2,344 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Alex Foster is a qualitative HRI researcher and incoming Master's student at the University of Washington.">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css">
-    <title>Alex Foster</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Foster</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      background-color: #0E1210;
+      color: #E7E4DC;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(rgba(6, 9, 8, 0.8)),
+        url('images/background-lake.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+
+    .layout {
+      display: flex;
+      align-items: stretch;
+      min-height: 100vh;
+    }
+
+    .profile {
+      flex: 0 0 280px;
+      padding: clamp(40px, 6vw, 60px) 0 40px clamp(20px, 4vw, 40px);
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 48px;
+      background-size: cover;
+      background-position: center;
+      background-image: url('images/background.jpg');
+      margin-bottom: 16px;
+    }
+
+    .profile h1 {
+      font-size: 18px;
+      font-weight: 600;
+      font-style: italic;
+      margin: 0 0 10px 0;
+      color: #F2EFE7;
+    }
+
+    .profile p {
+      font-size: 17px;
+      line-height: 24px;
+      color: #AAA1A2;
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .profile p+p {
+      margin-top: 16px;
+    }
+
+    .content-well {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1100px;
+      padding: clamp(30px, 6vw, 60px) clamp(16px, 3vw, 50px) clamp(40px, 8vw, 120px) clamp(16px, 3vw, 50px);
+      min-width: 0;
+    }
+
+    .section-label {
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: #F2EFE7;
+      margin: 0 0 6px 0;
+      padding-top: 4px;
+    }
+
+    .section-label:not(:first-child) {
+      margin-top: 20px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      gap: 18px;
+      align-items: baseline;
+      padding: 14px 6px;
+      margin: 0 -6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: inherit;
+      border-bottom: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .row.no-border {
+      border-top: none;
+    }
+
+    a.row:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-bottom: none;
+      border-top-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .row-title {
+      font-size: 17px;
+      font-weight: 400;
+      color: #F2EFE7;
+      white-space: normal;
+      line-height: 23px;
+    }
+
+    .row-desc {
+      font-size: 17px;
+      color: #F2EFE7;
+      line-height: 24px;
+    }
+
+    .row-date {
+      font-size: 15px;
+      color: #AAA1A2;
+      white-space: nowrap;
+    }
+
+    .row.pub {
+      grid-template-columns: 1fr auto;
+    }
+
+    .row.pub .row-title {
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 24px;
+    }
+
+    .row.pub .pub-meta {
+      font-size: 17px;
+      color: #F2EFE7;
+      margin-top: 3px;
+      font-weight: 400;
+    }
+
+    a {
+      color: #E7E4DC;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(231, 228, 220, 0.3);
+    }
+
+    a:hover {
+      border-bottom-color: #E7E4DC;
+    }
+
+    .site-footer {
+      flex: 0 0 200px;
+      padding: clamp(40px, 6vw, 60px) clamp(20px, 4vw, 40px) 40px 0;
+      position: sticky;
+      bottom: 0;
+      align-self: flex-end;
+      text-align: left;
+    }
+
+    .site-footer .links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .site-footer .links a {
+      font-size: 17px;
+      color: #AAA1A2;
+      border-bottom: none;
+    }
+
+    .site-footer .links a:hover {
+      color: #F2EFE7;
+    }
+
+    @media (max-width: 1400px) {
+      .site-footer {
+        flex-basis: 160px;
+      }
+    }
+
+    @media (max-width: 1280px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .profile {
+        position: static;
+        flex: none;
+        padding-left: clamp(16px, 3vw, 50px);
+      }
+
+      .content-well {
+        justify-content: flex-start;
+      }
+
+      main {
+        max-width: none;
+      }
+
+      .site-footer {
+        position: static;
+        flex: none;
+        align-self: auto;
+        width: 100%;
+        padding: 24px clamp(16px, 3vw, 50px) clamp(30px, 6vw, 60px) clamp(16px, 3vw, 50px);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .site-footer .links {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <nav>
-        <p><a href="index.html">work</a></p>
-        <p><a href="about.html">about</a></p>
-        <p><a href="https://drive.google.com/file/d/1hZXbG8HDNZ-HgfWGDBEOpivW7PlDpS-o/view?usp=sharing" target="_blank"
-                rel="noopener noreferrer">cv</a>
-        </p>
-    </nav>
 
-    <main>
-        <div class="intro">
+  <div class="layout">
 
-            <p>Alex Foster is a UX researcher at the <a href="https://r-house.luddy.indiana.edu/researchers/index.html" target="_blank"
-                    rel="noopener noreferrer"> R-House
-                    Robotics Lab</a> and <a href="https://rockman.com/">Rockman et al Cooperative</a>.
-            </p>
-        </div>
+    <div class="profile">
+      <div class="avatar"></div>
+      <h1>alex foster</h1>
+      <p>I'm a UX & CX researcher who uses research as a tool to drive initiatives, untangle confusion, and care for
+        overlooked people.</p>
+      <p>Currently a CX strategic research intern at Seattle City Light and studying Human Centered Design & Engineering
+        at the University of Washington.</p>
+    </div>
 
-        <section>
-            <h2>selected publications</h2>
-            <div class="publication">
-                <p><a href="https://people.ucsc.edu/~cfchung/assets/papers/chi2025-codesign-reflection.pdf"
-                        target="_blank" rel="noopener noreferrer">Designing with Dynamics:
-                        Reflections
-                        on
-                        Co-design Workshops Between People Living with Dementia and Their Care Partners.
-                    </a> In
-                    Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems (CHI '25). Long-Jing
-                    Hsu,
-                    <span style="color: #0000EE;">Alex Foster</span>, Selma Sabanovic, Chia-Fang Chung.
-                </p>
-            </div>
+    <div class="content-well">
+      <main>
 
-            <div class="publication">
-                <p><a href="#">Research as CARe: A reflection on
-                        methods and ethics in HRI with
-                        people living with dementia.</a>
-                    Accepted to Designing Interactive
-                    Systems Conference (DIS) 2025. Long-Jing Hsu, Janice K. Bays, Manasi Swaminathan, Weslie Khoo,
-                    Hiroki
-                    Sato,
-                    Kyrie Jig Amon, Sathvika Dobbala, Min Min Thant, <span style="color: #0000EE;">Alex
-                        Foster</span>,
-                    Katherine M. Tsui,
-                    Philip B. Stafford, David J. Crandall, Selma Šabanović. <span style="color: #0000EE;">This paper
-                        received an honorable mention!</span>
-                </p>
-            </div>
-        </section>
+        <p class="section-label">selected projects</p>
 
+        <a class="row no-border" href="index.html">
+          <div class="row-title">Designing with Dynamics</div>
+          <div class="row-desc">Created a co-design structure to reveal relationship dynamics between people living with dementia and their care partners</div>
+          <div class="row-date">2024-2025</div>
+        </a>
+        <a class="row" href="index.html">
+          <div class="row-title">Uber Wait & Save</div>
+          <div class="row-desc">Drove a usability study to uncover how to better communicate for time-flexible rides</div>
+          <div class="row-date">Jan-Mar 2026</div>
+        </a>
+        <a class="row" href="index.html">
+          <div class="row-title">Seattle City Light</div>
+          <div class="row-desc">Executed a citywide survey study understanding perceptions, awareness, and use of electric vehicles as part of a 6-year roadmap</div>
+          <div class="row-date">2024</div>
+        </a>
 
-        <footer>
-            <div class="contact">
-                <p>contact</p>
-                <a href="#">afost at uw dot edu</a>
+        <p class="section-label">publications</p>
 
-                <a href="https://scholar.google.com/citations?user=MfsAtTgAAAAJ&hl=en" target="_blank"
-                    rel="noopener noreferrer">google scholar</a>
+        <a class="row pub no-border" href="index.html">
+          <div>
+            <div class="row-title">Designing with dynamics: reflections on co-design workshops between people living
+              with dementia and their care partners</div>
+            <div class="pub-meta">Long-Jing Hsu, Alex Foster, et al.</div>
+          </div>
+          <div class="row-date">CHI '25</div>
+        </a>
+        <a class="row pub" href="index.html">
+          <div>
+            <div class="row-title">Research as care: A reflection on incorporating the ethics of care in design research
+              with people living with dementia</div>
+            <div class="pub-meta">Long-Jing Hsu, Janice Bays, Manasi Swaminathan, Weslie Khoo, Hiroki Sato, Kyrie Jig
+              Amon, Sathvika Dobbala, Min Min Thant, Alex Foster, et al.</div>
+          </div>
+          <div class="row-date">DIS '25</div>
+        </a>
+        <a class="row pub" href="index.html">
+          <div>
+            <div class="row-title">Tracking Together: A Robot-and-App-Based Speech Analysis System to Support Shared
+              Meaning-Making Among Dementia Care Partners</div>
+            <div class="pub-meta">Long-Jing Hsu, Nan Hu, Alex Foster, et al.</div>
+          </div>
+          <div class="row-date">CHI '26</div>
+        </a>
+        <a class="row pub" href="index.html">
+          <div>
+            <div class="row-title">HopKeys: Increasing Efficiency and Enjoyability When Typing</div>
+            <div class="pub-meta">Alex Foster, Anna Kim, Pengfei Zhang</div>
+          </div>
+          <div class="row-date">HRI '24</div>
+        </a>
 
-                <a href="#" target="_blank" rel="noopener noreferrer">linkedin</a>
-            </div>
+        <p class="section-label">get in touch</p>
 
-            <p><a href="#top">back to top</a></p>
+        <a class="row no-border" href="index.html">
+          <div class="row-title">afost@uw.edu</div>
+          <div class="row-desc">feel free to reach out</div>
+          <div class="row-date">anytime!</div>
+        </a>
 
-            <div class="footer-nav">
-                <p>navigation</p>
-                <a href="index.html">work</a>
-                <a href="about.html">about</a>
-                <a href="https://drive.google.com/file/d/1hZXbG8HDNZ-HgfWGDBEOpivW7PlDpS-o/view?usp=sharing"
-                    target="_blank" rel="noopener noreferrer">cv</a>
+      </main>
+    </div>
 
-            </div>
+    <div class="site-footer">
+      <div class="links">
+        <a href="#">resume</a>
+        <a href="#">linkedin</a>
+        <a href="#">google scholar</a>
+      </div>
+    </div>
 
-        </footer>
+  </div>
 
-    </main>
 </body>
 
 </html>
