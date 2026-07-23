@@ -11,8 +11,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       min-height: 100%;
     }
@@ -53,7 +52,7 @@
     }
 
     .avatar {
-      width: 96px;
+      width: 90px;
       height: 48px;
       background-size: cover;
       background-position: center;
@@ -62,23 +61,54 @@
     }
 
     .profile h1 {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 28px;
+      font-weight: 700;
       font-style: italic;
-      margin: 0 0 10px 0;
+      letter-spacing: -0.3px;
+      margin: 0 0 12px 0;
       color: #F2EFE7;
     }
 
-    .profile p {
-      font-size: 17px;
-      line-height: 24px;
-      color: #AAA1A2;
-      margin: 0;
+    .home-line {
+      font-size: 15px;
+      color: #C9C1C2;
+      margin: 0 0 20px 0;
+    }
+
+    .home-line a {
+      color: #B7BCB5;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(183, 188, 181, 0.4);
+    }
+
+    .home-line a:hover {
+      color: #F2EFE7;
+      border-bottom-color: #F2EFE7;
+    }
+
+    .about-sentence {
+      font-size: 15px;
+      line-height: 22px;
+      color: #C9C1C2;
+      margin: 0 0 12px 0;
       text-wrap: pretty;
     }
 
-    .profile p+p {
-      margin-top: 16px;
+    .about-line {
+      font-size: 15px;
+      color: #C9C1C2;
+      margin: 0;
+    }
+
+    .about-line a {
+      color: #B7BCB5;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(183, 188, 181, 0.4);
+    }
+
+    .about-line a:hover {
+      color: #F2EFE7;
+      border-bottom-color: #F2EFE7;
     }
 
     .content-well {
@@ -96,16 +126,18 @@
     }
 
     .section-label {
-      font-size: 18px;
-      font-weight: 400;
-      font-style: italic;
-      color: #F2EFE7;
-      margin: 0 0 6px 0;
+      font-size: 13px;
+      font-weight: 700;
+      font-style: normal;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: #B7BCB5;
+      margin: 0 0 10px 0;
       padding-top: 4px;
     }
 
     .section-label:not(:first-child) {
-      margin-top: 20px;
+      margin-top: 32px;
     }
 
     .row {
@@ -115,7 +147,7 @@
       align-items: baseline;
       padding: 14px 6px;
       margin: 0 -6px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
       text-decoration: none;
       color: inherit;
       border-bottom: none;
@@ -134,21 +166,22 @@
 
     .row-title {
       font-size: 17px;
-      font-weight: 400;
+      font-weight: 700;
       color: #F2EFE7;
       white-space: normal;
       line-height: 23px;
     }
 
     .row-desc {
-      font-size: 17px;
-      color: #F2EFE7;
-      line-height: 24px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #B7BCB5;
+      line-height: 23px;
     }
 
     .row-date {
-      font-size: 15px;
-      color: #AAA1A2;
+      font-size: 14px;
+      color: #9AA098;
       white-space: nowrap;
     }
 
@@ -157,15 +190,15 @@
     }
 
     .row.pub .row-title {
-      font-weight: 400;
+      font-weight: 700;
       font-size: 17px;
       line-height: 24px;
     }
 
     .row.pub .pub-meta {
-      font-size: 17px;
-      color: #F2EFE7;
-      margin-top: 3px;
+      font-size: 14px;
+      color: #B0B6AE;
+      margin-top: 4px;
       font-weight: 400;
     }
 
@@ -197,8 +230,8 @@
     }
 
     .site-footer .links a {
-      font-size: 17px;
-      color: #AAA1A2;
+      font-size: 15px;
+      color: #B7BCB5;
       border-bottom: none;
     }
 
@@ -216,30 +249,25 @@
       .layout {
         flex-direction: column;
       }
-
       .profile {
         position: static;
         flex: none;
         padding-left: clamp(16px, 3vw, 50px);
       }
-
       .content-well {
         justify-content: flex-start;
       }
-
       main {
         max-width: none;
       }
-
       .site-footer {
         position: static;
         flex: none;
         align-self: auto;
         width: 100%;
         padding: 24px clamp(16px, 3vw, 50px) clamp(30px, 6vw, 60px) clamp(16px, 3vw, 50px);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-top: 1px solid rgba(255,255,255,0.08);
       }
-
       .site-footer .links {
         flex-direction: row;
         justify-content: space-between;
@@ -255,12 +283,19 @@
   <div class="layout">
 
     <div class="profile">
+
       <div class="avatar"></div>
       <h1>alex foster</h1>
-      <p>I'm a UX & CX researcher who uses research as a tool to drive initiatives, untangle confusion, and care for
-        overlooked people.</p>
-      <p>Currently a CX strategic research intern at Seattle City Light and studying Human Centered Design & Engineering
-        at the University of Washington.</p>
+
+      <p class="home-line">you are <a href="index.html">home</a></p>
+
+      <p class="about-sentence">I'm a UX & CX researcher who uses research to drive initiatives, untangle confusion, and care for overlooked people.</p>
+      <p class="about-sentence">CX research intern at Seattle City Light · HCDE Master's student at UW</p>
+
+
+
+      <p class="about-line">learn more <a href="about.html">about me</a></p>
+
     </div>
 
     <div class="content-well">
@@ -270,17 +305,17 @@
 
         <a class="row no-border" href="index.html">
           <div class="row-title">Designing with Dynamics</div>
-          <div class="row-desc">Created a co-design structure to reveal relationship dynamics between people living with dementia and their care partners</div>
-          <div class="row-date">2024-2025</div>
+          <div class="row-desc">co-design study on creative conflict in multidisciplinary teams</div>
+          <div class="row-date">CHI '25</div>
         </a>
         <a class="row" href="index.html">
           <div class="row-title">Uber Wait & Save</div>
-          <div class="row-desc">Drove a usability study to uncover how to better communicate for time-flexible rides</div>
-          <div class="row-date">Jan-Mar 2026</div>
+          <div class="row-desc">usability study on time-flexible ride pricing</div>
+          <div class="row-date">2025</div>
         </a>
         <a class="row" href="index.html">
-          <div class="row-title">Seattle City Light</div>
-          <div class="row-desc">Executed a citywide survey study understanding perceptions, awareness, and use of electric vehicles as part of a 6-year roadmap</div>
+          <div class="row-title">Dementia Speech System</div>
+          <div class="row-desc">voice tech research with dementia caregivers</div>
           <div class="row-date">2024</div>
         </a>
 
@@ -288,25 +323,21 @@
 
         <a class="row pub no-border" href="index.html">
           <div>
-            <div class="row-title">Designing with dynamics: reflections on co-design workshops between people living
-              with dementia and their care partners</div>
+            <div class="row-title">Designing with dynamics: reflections on co-design workshops between people living with dementia and their care partners</div>
             <div class="pub-meta">Long-Jing Hsu, Alex Foster, et al.</div>
           </div>
           <div class="row-date">CHI '25</div>
         </a>
         <a class="row pub" href="index.html">
           <div>
-            <div class="row-title">Research as care: A reflection on incorporating the ethics of care in design research
-              with people living with dementia</div>
-            <div class="pub-meta">Long-Jing Hsu, Janice Bays, Manasi Swaminathan, Weslie Khoo, Hiroki Sato, Kyrie Jig
-              Amon, Sathvika Dobbala, Min Min Thant, Alex Foster, et al.</div>
+            <div class="row-title">Research as care: A reflection on incorporating the ethics of care in design research with people living with dementia</div>
+            <div class="pub-meta">Long-Jing Hsu, Janice Bays, Manasi Swaminathan, Weslie Khoo, Hiroki Sato, Kyrie Jig Amon, Sathvika Dobbala, Min Min Thant, Alex Foster, et al.</div>
           </div>
           <div class="row-date">DIS '25</div>
         </a>
         <a class="row pub" href="index.html">
           <div>
-            <div class="row-title">Tracking Together: A Robot-and-App-Based Speech Analysis System to Support Shared
-              Meaning-Making Among Dementia Care Partners</div>
+            <div class="row-title">Tracking Together: A Robot-and-App-Based Speech Analysis System to Support Shared Meaning-Making Among Dementia Care Partners</div>
             <div class="pub-meta">Long-Jing Hsu, Nan Hu, Alex Foster, et al.</div>
           </div>
           <div class="row-date">CHI '26</div>
