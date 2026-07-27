@@ -9,43 +9,91 @@
     * {
       box-sizing: border-box;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      cursor: crosshair;
     }
 
-    html, body {
+    a,
+    button {
+      cursor: pointer;
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #8A9089 #F2EFE7;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #F2EFE7;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #8A9089;
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #5A5D57;
+    }
+
+    html,
+    body {
       margin: 0;
       min-height: 100%;
     }
 
     body {
-      background-color: #0E1210;
-      color: #E7E4DC;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image:
-        linear-gradient(rgba(6, 9, 8, 0.8)),
-        url('images/background-lake.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -1;
-    }
-
-    .layout {
-      position: relative;
+      background-color: #F2EFE7;
+      color: #1A1A1C;
       display: flex;
-      align-items: flex-start;
+      justify-content: center;
     }
 
-    .profile {
-      flex: 0 0 260px;
-      padding: clamp(40px, 6vw, 60px) 0 clamp(40px, 6vw, 60px) clamp(20px, 4vw, 40px);
+    a {
+      color: #1A1A1C;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    a:hover {
+      color: #000000;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 760px;
+      padding: clamp(50px, 8vw, 90px) clamp(20px, 4vw, 40px) clamp(60px, 10vw, 100px) clamp(20px, 4vw, 40px);
+    }
+
+    @media (min-width: 1400px) {
+      .page {
+        max-width: 880px;
+      }
+    }
+
+    .hero-hint {
+      font-size: 14px;
+      font-style: italic;
+      color: #6B6E68;
+      margin: 10px 0 10px 0;
+      transition: opacity 0.6s ease;
+      text-align: end;
+    }
+
+    .hero-hint.hidden {
+      opacity: 0;
+    }
+
+    #hero-canvas {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 1;
+      margin-bottom: 10px;
+      margin-top: 50px;
+      cursor: cell;
     }
 
     .avatar {
@@ -57,211 +105,210 @@
       margin-bottom: 16px;
     }
 
-    .profile h1 {
+    .intro {
+      margin-bottom: 44px;
+    }
+
+    .intro h1 {
       font-size: 28px;
-      font-weight: 700;
+      font-weight: 400;
       font-style: italic;
       letter-spacing: -0.3px;
-      margin: 0 0 12px 0;
-      color: #F2EFE7;
-    }
-
-    .home-line {
-      font-size: 15px;
-      color: #C9C1C2;
-      margin: 0 0 20px 0;
-    }
-
-    .home-line a {
-      color: #B7BCB5;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(183, 188, 181, 0.4);
-    }
-
-    .home-line a:hover {
-      color: #F2EFE7;
-      border-bottom-color: #F2EFE7;
+      margin: 0 0 14px 0;
+      color: #1A1A1C;
     }
 
     .about-sentence {
-      font-size: 15px;
-      line-height: 22px;
-      color: #C9C1C2;
-      margin: 0 0 12px 0;
-      text-wrap: pretty;
-    }
-
-    .about-line {
-      font-size: 15px;
-      color: #C9C1C2;
-      margin: 0;
-    }
-
-    .about-line a {
-      color: #B7BCB5;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(183, 188, 181, 0.4);
-    }
-
-    .about-line a:hover {
-      color: #F2EFE7;
-      border-bottom-color: #F2EFE7;
-    }
-
-    .content-well {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      min-width: 0;
-      padding-left: clamp(40px, 5vw, 70px);
-      padding-right: calc(clamp(40px, 5vw, 70px) + clamp(20px, 4vw, 40px) + 160px);
-    }
-
-    main {
-      width: 100%;
-      max-width: 750px;
-      padding: clamp(30px, 6vw, 60px) 0 clamp(40px, 8vw, 120px) 0;
-      min-width: 0;
+      font-size: 17px;
+      line-height: 25px;
+      color: #4A4A46;
+      margin: 0 0 14px 0;
     }
 
     .section-label {
-      font-size: 13px;
-      font-weight: 700;
-      font-style: normal;
-      letter-spacing: 1.6px;
-      text-transform: uppercase;
-      color: #B7BCB5;
-      margin: 0 0 10px 0;
-      padding-top: 4px;
-    }
-
-    .section-label:not(:first-child) {
-      margin-top: 32px;
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: 240px 1fr auto;
-      gap: 18px;
-      align-items: baseline;
-      padding: 14px 6px;
-      margin: 0 -6px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-decoration: none;
-      color: inherit;
-      border-bottom: none;
-      transition: background-color 0.15s ease;
-    }
-
-    .row.no-border {
-      border-top: none;
-    }
-
-    a.row:hover {
-      background-color: rgba(255, 255, 255, 0.03);
-      border-bottom: none;
-      border-top-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .row-title {
-      font-size: 17px;
-      font-weight: 700;
-      color: #F2EFE7;
-      white-space: normal;
-      line-height: 23px;
-    }
-
-    .row-desc {
-      font-size: 16px;
+      font-size: 26px;
       font-weight: 400;
-      color: #B7BCB5;
-      line-height: 23px;
+      font-style: italic;
+      letter-spacing: -0.2px;
+      color: #1A1A1C;
+      margin: 0 0 20px 0;
     }
 
-    .row-date {
-      font-size: 14px;
-      color: #9AA098;
-      white-space: nowrap;
+    .section-label:not(:first-of-type) {
+      margin-top: 48px;
     }
 
-    .row.pub {
-      grid-template-columns: 1fr auto;
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      padding-bottom: 0;
     }
 
-    .row.pub .row-title {
-      font-weight: 700;
-      font-size: 17px;
+    .tab-btn {
+      appearance: none;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 15px;
+      color: #6B6E68;
+      padding: 8px 14px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: #1A1A1C;
+    }
+
+    .tab-btn.active {
+      color: #1A1A1C;
+      border-bottom-color: #1A1A1C;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .pub-item {
+      margin-bottom: 28px;
+    }
+
+    .pub-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .pub-title-line {
       line-height: 24px;
+      margin: 0;
     }
 
-    .row.pub .pub-meta {
-      font-size: 14px;
-      color: #B0B6AE;
-      margin-top: 4px;
-      font-weight: 400;
+    .pub-link {
+      font-size: 17px;
+      font-weight: 500;
+      color: #1A1A1C;
     }
 
-    a {
-      color: #E7E4DC;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(231, 228, 220, 0.3);
+    .pub-link:hover {
+      color: #000000;
     }
 
-    a:hover {
-      border-bottom-color: #E7E4DC;
+    .pub-item-desc {
+      font-size: 15px;
+      color: #6B6E68;
+      margin: 2px 0 0 0;
     }
 
-    .site-footer {
-      position: absolute;
-      right: clamp(20px, 4vw, 40px);
-      bottom: clamp(40px, 8vw, 120px);
-      width: 160px;
-      text-align: left;
+    .venue-pill {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #5A5D57;
+      background: rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 10px;
+      padding: 1px 7px;
+      white-space: nowrap;
+      vertical-align: middle;
+      margin-left: 8px;
     }
 
-    .site-footer .links {
+    .case-row {
+      display: flex;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .case-card {
+      flex: 1 1 0;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 6px;
+      background: rgb(242, 239, 231);
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 0;
+      padding: 20px 18px;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
     }
 
-    .site-footer .links a {
-      font-size: 15px;
-      color: #B7BCB5;
-      border-bottom: none;
+    .case-card:hover {
+      background: rgba(242, 239, 231, .8);
+      border-color: rgba(0, 0, 0, 0.24);
     }
 
-    .site-footer .links a:hover {
-      color: #F2EFE7;
+    .case-card:hover .case-title {
+      color: #000000;
     }
 
-    @media (max-width: 1280px) {
-      .layout {
+    .case-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #5A5D57;
+      background: #F2EFE7;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      border-radius: 0;
+      padding: 1px 7px;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-size: 17px;
+      font-weight: 500;
+      color: #1A1A1C;
+      line-height: 22px;
+      margin-bottom: 8px;
+    }
+
+    .case-card .pub-item-desc {
+      flex: 1;
+      margin-top: 0;
+    }
+
+    .bio-text {
+      font-size: 17px;
+      line-height: 27px;
+      color: #4A4A46;
+      margin: 0 0 20px 0;
+    }
+
+    .bio-text:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .contact-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-text,
+    .contact-group a {
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 25px;
+      color: #4A4A46;
+      margin: 0;
+    }
+
+    .contact-group a {
+      color: #5A5D57;
+    }
+
+    .contact-group a:hover {
+      color: #1A1A1C;
+    }
+
+    @media (max-width: 640px) {
+      .case-row {
         flex-direction: column;
-      }
-      .profile {
-        flex: none;
-        padding-left: clamp(16px, 3vw, 50px);
-      }
-      .content-well {
-        justify-content: flex-start;
-        padding-left: clamp(16px, 3vw, 50px);
-        padding-right: clamp(16px, 3vw, 50px);
-      }
-      main {
-        max-width: none;
-      }
-      .site-footer {
-        position: static;
-        width: 100%;
-        padding: 24px clamp(16px, 3vw, 50px) clamp(30px, 6vw, 60px) clamp(16px, 3vw, 50px);
-        border-top: 1px solid rgba(255,255,255,0.08);
-      }
-      .site-footer .links {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
       }
     }
   </style>
@@ -269,95 +316,277 @@
 
 <body>
 
-  <div class="layout">
+  <div class="page">
 
-    <div class="profile">
-
-      <div class="avatar"></div>
+    <div class="intro">
       <h1>alex foster</h1>
 
-      <p class="home-line">you are <a href="index.html">home</a></p>
+      <p class="about-sentence">UX & CX researcher who uses research to drive novel initiatives, untangle confusion, and
+        care for overlooked people.</p>
 
-      <p class="about-sentence">I'm a UX & CX researcher who uses research to drive initiatives, untangle confusion, and care for overlooked people.</p>
+      <p class="about-sentence">CX strategic research intern at Seattle City Light · MS Human Centered Design &
+        Engineering at UW</p>
 
-      <p class="about-sentence">CX research intern at Seattle City Light · HCDE Master's student at UW</p>
 
-      <p class="about-line">learn more <a href="about.html">about me</a></p>
-
+      <canvas id="hero-canvas"></canvas>
+      <p class="hero-hint" id="hero-hint">research turns noise into clarity. hover over the image below</p>
     </div>
 
-    <div class="content-well">
-      <main>
+    <p class="section-label">work</p>
 
-        <p class="section-label">selected projects</p>
-
-        <a class="row no-border" href="index.html">
-          <div class="row-title">Designing with Dynamics</div>
-          <div class="row-desc">co-design study on creative conflict in multidisciplinary teams</div>
-          <div class="row-date">CHI '25</div>
-        </a>
-        <a class="row" href="index.html">
-          <div class="row-title">Uber Wait & Save</div>
-          <div class="row-desc">usability study on time-flexible ride pricing</div>
-          <div class="row-date">2025</div>
-        </a>
-        <a class="row" href="index.html">
-          <div class="row-title">Dementia Speech System</div>
-          <div class="row-desc">voice tech research with dementia caregivers</div>
-          <div class="row-date">2024</div>
-        </a>
-
-        <p class="section-label">publications</p>
-
-        <a class="row pub no-border" href="index.html">
-          <div>
-            <div class="row-title">Designing with dynamics: reflections on co-design workshops between people living with dementia and their care partners</div>
-            <div class="pub-meta">Long-Jing Hsu, Alex Foster, et al.</div>
-          </div>
-          <div class="row-date">CHI '25</div>
-        </a>
-        <a class="row pub" href="index.html">
-          <div>
-            <div class="row-title">Research as care: A reflection on incorporating the ethics of care in design research with people living with dementia</div>
-            <div class="pub-meta">Long-Jing Hsu, Janice Bays, Manasi Swaminathan, Weslie Khoo, Hiroki Sato, Kyrie Jig Amon, Sathvika Dobbala, Min Min Thant, Alex Foster, et al.</div>
-          </div>
-          <div class="row-date">DIS '25</div>
-        </a>
-        <a class="row pub" href="index.html">
-          <div>
-            <div class="row-title">Tracking Together: A Robot-and-App-Based Speech Analysis System to Support Shared Meaning-Making Among Dementia Care Partners</div>
-            <div class="pub-meta">Long-Jing Hsu, Nan Hu, Alex Foster, et al.</div>
-          </div>
-          <div class="row-date">CHI '26</div>
-        </a>
-        <a class="row pub" href="index.html">
-          <div>
-            <div class="row-title">HopKeys: Increasing Efficiency and Enjoyability When Typing</div>
-            <div class="pub-meta">Alex Foster, Anna Kim, Pengfei Zhang</div>
-          </div>
-          <div class="row-date">HRI '24</div>
-        </a>
-
-        <p class="section-label">get in touch</p>
-
-        <a class="row no-border" href="index.html">
-          <div class="row-title">afost@uw.edu</div>
-          <div class="row-desc">feel free to reach out</div>
-          <div class="row-date">anytime!</div>
-        </a>
-
-      </main>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('case-studies', this)">case studies</button>
+      <button class="tab-btn" onclick="showTab('publications', this)">publications</button>
     </div>
 
-    <div class="site-footer">
-      <div class="links">
-        <a href="#">resume</a>
-        <a href="#">linkedin</a>
-        <a href="#">google scholar</a>
+    <div id="case-studies" class="tab-panel active">
+      <div class="case-row">
+        <a class="case-card" href="index.html">
+          <span class="case-tag">CHI '25</span>
+          <span class="case-title">Designing with Dynamics</span>
+          <p class="pub-item-desc">co-design study on creative conflict in multidisciplinary teams</p>
+        </a>
+        <a class="case-card" href="index.html">
+          <span class="case-tag">2025</span>
+          <span class="case-title">Uber Wait & Save</span>
+          <p class="pub-item-desc">usability study on time-flexible ride pricing</p>
+        </a>
+        <a class="case-card" href="index.html">
+          <span class="case-tag">2024</span>
+          <span class="case-title">Dementia Speech System</span>
+          <p class="pub-item-desc">voice tech research with dementia caregivers</p>
+        </a>
       </div>
     </div>
 
+    <div id="publications" class="tab-panel">
+      <div class="pub-item">
+        <p class="pub-title-line">
+          <a class="pub-link" href="index.html">Tracking Together: A Robot-and-App-Based Speech Analysis System to
+            Support Shared Meaning-Making Among Dementia Care Partners</a><span class="venue-pill">CHI '26</span>
+        </p>
+        <p class="pub-item-desc">Long-Jing Hsu, Nan Hu, Alex Foster, et al.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title-line">
+          <a class="pub-link" href="index.html">Designing with dynamics: reflections on co-design workshops between
+            people living with dementia and their care partners</a><span class="venue-pill">CHI '25</span>
+        </p>
+        <p class="pub-item-desc">Long-Jing Hsu, Alex Foster, et al.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title-line">
+          <a class="pub-link" href="index.html">Research as care: A reflection on incorporating the ethics of care in
+            design research with people living with dementia</a><span class="venue-pill">DIS '25</span>
+        </p>
+        <p class="pub-item-desc">Long-Jing Hsu, Janice Bays, Manasi Swaminathan, Weslie Khoo, Hiroki Sato, Kyrie Jig
+          Amon, Sathvika Dobbala, Min Min Thant, Alex Foster, et al.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title-line">
+          <a class="pub-link" href="index.html">HopKeys: Increasing Efficiency and Enjoyability When Typing</a><span
+            class="venue-pill">HRI '24</span>
+        </p>
+        <p class="pub-item-desc">Alex Foster, Anna Kim, Pengfei Zhang</p>
+      </div>
+    </div>
+
+    <p class="section-label">about</p>
+
+    <p class="bio-text">I'm a UX & CX researcher based in Seattle, currently working as a customer experience strategic
+      research intern at Seattle City Light while finishing my Master's in Human Centered Design & Engineering at the
+      University of Washington.</p>
+
+    <p class="bio-text">Outside of research, I'm drawn to the small, human details of how people actually live with the
+      systems designed for them — which is probably why so much of my work ends up being about care, whether that's for
+      a caregiver, a rider, or a teammate stuck in a hard conversation.</p>
+
+    <p class="section-label">get in touch</p>
+
+    <div class="contact-group">
+      <p class="contact-text">afost [at] uw [dot] edu</p>
+      <a href="#">resume</a>
+      <a href="#">linkedin</a>
+      <a href="#">google scholar</a>
+    </div>
+
   </div>
+
+  <script>
+    function showTab(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    // --- hero image reveal effect: fills in permanently as you move over it ---
+    (function () {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      const hint = document.getElementById('hero-hint');
+
+      function fadeHint() {
+        hint.classList.add('hidden');
+      }
+      canvas.addEventListener('mousemove', fadeHint, { once: true });
+      canvas.addEventListener('touchstart', fadeHint, { once: true });
+
+      const RES_W = 1200;
+      const RES_H = 400;
+      canvas.width = RES_W;
+      canvas.height = RES_H;
+
+      const CROP_ANCHOR_Y = 0;
+
+      const ditheredImg = new Image();
+      const colorImg = new Image();
+      let readyCount = 0;
+      function onLoad() {
+        readyCount++;
+        if (readyCount === 2) requestAnimationFrame(loop);
+      }
+      ditheredImg.onload = onLoad;
+      colorImg.onload = onLoad;
+      ditheredImg.src = 'images/hydrangea-dithered-bayerv2.png';
+      colorImg.src = 'images/background.jpg';
+
+      function drawCover(targetCtx, img, w, h, anchorY) {
+        const imgRatio = img.width / img.height;
+        const boxRatio = w / h;
+        let sx, sy, sw, sh;
+        if (imgRatio > boxRatio) {
+          sh = img.height;
+          sw = sh * boxRatio;
+          sx = (img.width - sw) / 2;
+          sy = 0;
+        } else {
+          sw = img.width;
+          sh = sw / boxRatio;
+          sx = 0;
+          sy = (img.height - sh) * anchorY;
+        }
+        targetCtx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
+      }
+
+      const permanentCanvas = document.createElement('canvas');
+      permanentCanvas.width = RES_W;
+      permanentCanvas.height = RES_H;
+      const permanentCtx = permanentCanvas.getContext('2d');
+
+      const activeCanvas = document.createElement('canvas');
+      activeCanvas.width = RES_W;
+      activeCanvas.height = RES_H;
+      const activeCtx = activeCanvas.getContext('2d');
+
+      const trailCanvas = document.createElement('canvas');
+      trailCanvas.width = RES_W;
+      trailCanvas.height = RES_H;
+      const trailCtx = trailCanvas.getContext('2d');
+
+      const revealCanvas = document.createElement('canvas');
+      revealCanvas.width = RES_W;
+      revealCanvas.height = RES_H;
+      const revealCtx = revealCanvas.getContext('2d');
+
+      let lastPos = null;
+      const stamps = [];
+      const SPAWN_DISTANCE = 18;
+      const GROW_DURATION = 900;
+      const REVEAL_RADIUS = 95;
+      const REVEAL_ALPHA = 0.92;
+
+      function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: (clientX - rect.left) / rect.width * RES_W,
+          y: (clientY - rect.top) / rect.height * RES_H
+        };
+      }
+
+      function handleMove(pos) {
+        if (!lastPos) {
+          stamps.push({ x: pos.x, y: pos.y, start: performance.now() });
+          lastPos = pos;
+          return;
+        }
+        const dx = pos.x - lastPos.x;
+        const dy = pos.y - lastPos.y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < 1) return;
+
+        const steps = Math.max(1, Math.floor(dist / SPAWN_DISTANCE));
+        for (let i = 1; i <= steps; i++) {
+          const t = i / steps;
+          stamps.push({
+            x: lastPos.x + dx * t,
+            y: lastPos.y + dy * t,
+            start: performance.now()
+          });
+        }
+        lastPos = pos;
+      }
+
+      canvas.addEventListener('mousemove', (e) => handleMove(getPos(e)));
+      canvas.addEventListener('mouseleave', () => { lastPos = null; });
+      canvas.addEventListener('touchmove', (e) => {
+        handleMove(getPos(e));
+        e.preventDefault();
+      }, { passive: false });
+      canvas.addEventListener('touchend', () => { lastPos = null; });
+
+      function softCircle(targetCtx, x, y, radius, alpha) {
+        if (radius <= 0) return;
+        const grad = targetCtx.createRadialGradient(x, y, 0, x, y, radius);
+        grad.addColorStop(0, `rgba(255,255,255,${alpha})`);
+        grad.addColorStop(0.7, `rgba(255,255,255,${alpha})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        targetCtx.fillStyle = grad;
+        targetCtx.beginPath();
+        targetCtx.arc(x, y, radius, 0, Math.PI * 2);
+        targetCtx.fill();
+      }
+
+      function loop() {
+        activeCtx.clearRect(0, 0, RES_W, RES_H);
+
+        const now = performance.now();
+        for (let i = stamps.length - 1; i >= 0; i--) {
+          const s = stamps[i];
+          const age = now - s.start;
+
+          if (age >= GROW_DURATION) {
+            softCircle(permanentCtx, s.x, s.y, REVEAL_RADIUS, REVEAL_ALPHA);
+            stamps.splice(i, 1);
+            continue;
+          }
+
+          const progress = age / GROW_DURATION;
+          const radius = REVEAL_RADIUS * progress;
+          const alpha = REVEAL_ALPHA * progress;
+          softCircle(activeCtx, s.x, s.y, radius, alpha);
+        }
+
+        trailCtx.clearRect(0, 0, RES_W, RES_H);
+        trailCtx.drawImage(permanentCanvas, 0, 0);
+        trailCtx.drawImage(activeCanvas, 0, 0);
+
+        revealCtx.clearRect(0, 0, RES_W, RES_H);
+        drawCover(revealCtx, colorImg, RES_W, RES_H, CROP_ANCHOR_Y);
+        revealCtx.globalCompositeOperation = 'destination-in';
+        revealCtx.drawImage(trailCanvas, 0, 0, RES_W, RES_H);
+        revealCtx.globalCompositeOperation = 'source-over';
+
+        ctx.clearRect(0, 0, RES_W, RES_H);
+        drawCover(ctx, ditheredImg, RES_W, RES_H, CROP_ANCHOR_Y);
+        ctx.drawImage(revealCanvas, 0, 0, RES_W, RES_H);
+
+        requestAnimationFrame(loop);
+      }
+    })();
+  </script>
 
 </body>
 
